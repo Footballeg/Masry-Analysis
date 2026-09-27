@@ -71,19 +71,24 @@ st.markdown(custom_css, unsafe_allow_html=True)
 os.makedirs("assets", exist_ok=True)
 
 # ==========================
-# 3. بناء الـ Navbar
+# 3. بناء الـ Navbar (بالطريقة المضمونة لستريملت)
 # ==========================
-logo1_html = f'<img src="data:image/png;base64,{get_image_base64("assets/logo1.png")}" class="logo-img">' if os.path.exists("assets/logo1.png") else ''
-logo2_html = f'<img src="data:image/png;base64,{get_image_base64("assets/logo2.png")}" class="logo-img">' if os.path.exists("assets/logo2.png") else ''
+col1, col2, col3 = st.columns([1, 4, 1])
 
-navbar_html = f"""
-<div class="navbar">
-    <div>{logo1_html}</div>
-    <div class="navbar-title">WADI DEGLA FC - PERFORMANCE ANALYSIS</div>
-    <div>{logo2_html}</div>
-</div>
-"""
-st.markdown(navbar_html, unsafe_allow_html=True)
+with col1:
+    try:
+        st.image("assets/logo1.png", width=80)
+    except Exception as e:
+        st.error(f"مشكلة في logo1: تأكد من الاسم والامتداد بالضبط")
+
+with col2:
+    st.markdown("<h3 style='text-align: center; color: white; margin-top: 15px; font-family: sans-serif; font-weight: 600; letter-spacing: 1px;'>WADI DEGLA FC - PERFORMANCE ANALYSIS</h3>", unsafe_allow_html=True)
+
+with col3:
+    try:
+        st.image("assets/logo2.png", width=80)
+    except Exception as e:
+        st.error(f"مشكلة في logo2: تأكد من الاسم والامتداد بالضبط")
 
 # ==========================
 # 4. تخطيط الشاشة وتفعيل مشغل الفيديو

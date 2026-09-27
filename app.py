@@ -15,7 +15,7 @@ def get_image_base64(image_path):
 # هنا بتكتب اسم اللاعب ورابط الفيديو (غير المدرج) الخاص به
 squad_data = {
     "attackers": {
-        "Omar": "https://www.youtube.com/watch?v=XXXXXXXXXXX",
+        "Ahmed Farouk_Scouting Draw": "https://www.youtube.com/watch?v=XXXXXXXXXXX",
         "Ahmed": "https://youtu.be/YYYYYYYYYYY"
     },
     "midfielders": {

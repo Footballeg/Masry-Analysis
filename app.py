@@ -5,9 +5,17 @@ import urllib.parse
 
 st.set_page_config(page_title="Wadi Degla - Performance Analysis", layout="wide")
 
+# ==========================
+# السر هنا: الذاكرة المؤقتة (Cache) لسرعة خرافية
+# السطر ده بيمنع السيرفر إنه يعيد تحميل الصور مع كل كليك
+# ==========================
+@st.cache_data
 def get_image_base64(image_path):
-    with open(image_path, "rb") as img_file:
-        return base64.b64encode(img_file.read()).decode()
+    if os.path.exists(image_path):
+        with open(image_path, "rb") as img_file:
+            return base64.b64encode(img_file.read()).decode()
+    return None
+
 
 # ==========================
 # 1. قاعدة بيانات اللاعبين (روابط يوتيوب)

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wadi Degla - Tactical Board</title>
+    <title>منصة التحليل التكتيكي</title>
     <style>
         body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #121212; color: white; }
         .navbar { display: flex; justify-content: space-between; align-items: center; background-color: #1e1e1e; padding: 10px 20px; border-bottom: 2px solid #333; }
@@ -20,10 +20,10 @@
         .section-title { color: #a0a0a0; font-size: 14px; margin: 15px 0 10px 0; border-bottom: 1px solid #333; padding-bottom: 5px; }
         .players-grid { display: flex; flex-wrap: wrap; gap: 15px; }
         
-        .player-card { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: 0.3s; padding: 5px; border-radius: 8px; }
+        .player-card { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: 0.3s; padding: 5px; border-radius: 8px; width: 80px;}
         .player-card:hover { background-color: #2c2c2c; }
         .player-card img { width: 65px; height: 65px; border-radius: 50%; border: 2px solid #444; object-fit: cover; }
-        .player-card span { color: #ccc; font-size: 12px; margin-top: 8px; font-weight: bold; }
+        .player-card span { color: #ccc; font-size: 12px; margin-top: 8px; font-weight: bold; text-align: center;}
         .active-player { background-color: #333; }
         .active-player img { border-color: #66bb6a; border-width: 3px; }
     </style>
@@ -31,99 +31,89 @@
 <body>
 
     <div class="navbar">
-        <img src="assets/logo1.png" class="logo" alt="Logo">
-        <h3>منصة التحليل التكتيكي - وادي دجلة</h3>
-        <img src="assets/logo2.png" class="logo" alt="Logo">
+        <img src="assets/logo1.png" class="logo" alt="Logo" onerror="this.style.display='none'">
+        <h3>منصة التحليل التكتيكي</h3>
+        <img src="assets/logo2.png" class="logo" alt="Logo" onerror="this.style.display='none'">
     </div>
 
     <div class="container">
-        
-       <!-- قسم التشكيل واختيار اللاعبين -->
-        <div class="squad-section">
-            
-            <!-- 1. حراس المرمى -->
-            <div class="section-title">حراس المرمى (Goalkeepers)</div>
-            <div class="players-grid">
-                <div class="player-card" onclick="changeVideo('محمود جاد', 'ID_HERE', this)">
-                    <img src="images/goalkeepers/gad.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Gad'">
-                    <span>محمود جاد</span>
-                </div>
-                <div class="player-card" onclick="changeVideo('عصام ثروت', 'ID_HERE', this)">
-                    <img src="images/goalkeepers/tharwat.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Tharwat'">
-                    <span>عصام ثروت</span>
-                </div>
-            </div>
+        <!-- الكود هنا فاضي، الجافاسكريبت هيملطش الداتا ويرصها لوحده -->
+        <div class="squad-section" id="squadContainer"></div>
 
-            <!-- 2. المدافعين -->
-            <div class="section-title">المدافعين (Defenders)</div>
-            <div class="players-grid">
-                <div class="player-card" onclick="changeVideo('باهر المحمدي', 'ID_HERE', this)">
-                    <img src="images/defenders/baher.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Baher'">
-                    <span>باهر المحمدي</span>
-                </div>
-                <div class="player-card" onclick="changeVideo('كريم العراقي', 'ID_HERE', this)">
-                    <img src="images/defenders/karim.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Karim'">
-                    <span>كريم العراقي</span>
-                </div>
-                <div class="player-card" onclick="changeVideo('عمرو سعداوي', 'ID_HERE', this)">
-                    <img src="images/defenders/saadawy.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Saadawy'">
-                    <span>عمرو سعداوي</span>
-                </div>
-                <div class="player-card" onclick="changeVideo('حسين السيد', 'ID_HERE', this)">
-                    <img src="images/defenders/hussein.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Hussein'">
-                    <span>حسين السيد</span>
-                </div>
-            </div>
-
-            <!-- 3. خط الوسط -->
-            <div class="section-title">خط الوسط (Midfielders)</div>
-            <div class="players-grid">
-                <div class="player-card" onclick="changeVideo('محمود حمادة', 'ID_HERE', this)">
-                    <img src="images/midfielders/hamada.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Hamada'">
-                    <span>محمود حمادة</span>
-                </div>
-                <div class="player-card" onclick="changeVideo('ميدو جابر', 'ID_HERE', this)">
-                    <img src="images/midfielders/mido.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Mido'">
-                    <span>ميدو جابر</span>
-                </div>
-                <div class="player-card" onclick="changeVideo('سمير فكري', 'ID_HERE', this)">
-                    <img src="images/midfielders/samir.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Samir'">
-                    <span>سمير فكري</span>
-                </div>
-            </div>
-
-            <!-- 4. المهاجمين -->
-            <div class="section-title">المهاجمين (Forwards)</div>
-            <div class="players-grid">
-                <div class="player-card" onclick="changeVideo('فخر الدين بن يوسف', 'ID_HERE', this)">
-                    <img src="images/forwards/fakhr.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Fakhr'">
-                    <span>بن يوسف</span>
-                </div>
-                <div class="player-card" onclick="changeVideo('صلاح محسن', 'ID_HERE', this)">
-                    <img src="images/forwards/salah.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Salah'">
-                    <span>صلاح محسن</span>
-                </div>
-                <div class="player-card" onclick="changeVideo('محمد الشامي', 'ID_HERE', this)">
-                    <img src="images/forwards/shami.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Shami'">
-                    <span>محمد الشامي</span>
-                </div>
-            </div>
-
+        <div class="video-section">
+            <div class="video-title" id="playingTitle">▶ اختر لاعب لعرض الحالات التكتيكية</div>
+            <iframe id="videoPlayer" src="" allowfullscreen></iframe>
         </div>
+    </div>
+
     <script>
-        function changeVideo(playerName, youtubeId, element) {
-            // تغيير رابط الفيديو
-            const player = document.getElementById('videoPlayer');
-            player.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
+        // ==========================================
+        // تعديل: أضفنا videoLink بدلاً من videoId عشان يقبل الرابط كامل
+        // ==========================================
+        const playersData = {
+            "حراس المرمى": [
+                { name: "محمد سيحا", image: "images/goalkeepers/Seha.png", videoLink: "https://www.youtube.com/embed/mOkq1lN_x1w?autoplay=1" },
+                { name: "محمد حمدي", image: "images/goalkeepers/Hamdy.png", videoLink: "رابط_الفيديو_هنا" }
+            ],
+            "المدافعين": [
+                { name: "باهر المحمدي", image: "images/defenders/Baher.png", videoLink: "https://www.youtube.com/embed/eNinY8BgEgU?autoplay=1" },
+                { name: "مصطفي العش", image: "images/defenders/El Aash.png", videoLink: "https://drive.google.com/file/d/1-3rN-ch8dPDpyNralflITGWudiy1YUIV/preview" },
+                { name: "السعدوي", image: "images/defenders/El Saadawy.png", videoLink: "رابط_الفيديو_هنا" },
+                { name: "كريم العراقي", image: "images/defenders/EL Eraki.png", videoLink: "رابط_الفيديو_هنا" },
+                { name: "محمد هشام", image: "images/defenders/Hashem.png", videoLink: "رابط_الفيديو_هنا" },
+                { name: "محمد شكري", image: "images/defenders/Shokry.png", videoLink: "رابط_الفيديو_هنا" },
+                { name: "خالد صبحي", image: "images/defenders/baher.jpg", videoLink: "رابط_الفيديو_هنا" },
+                
+            ],
+
+            "خط الوسط": [
+                { name: "ميدو جابر", image: "images/midfielders/mido.jpg", videoLink: "رابط_الفيديو_هنا" },
+                { name: "ميدو جابر", image: "images/midfielders/mido.jpg", videoLink: "رابط_الفيديو_هنا" },
+                { name: "ميدو جابر", image: "images/midfielders/mido.jpg", videoLink: "رابط_الفيديو_هنا" },
+                { name: "ميدو جابر", image: "images/midfielders/mido.jpg", videoLink: "رابط_الفيديو_هنا" },
+                { name: "ميدو جابر", image: "images/midfielders/mido.jpg", videoLink: "رابط_الفيديو_هنا" },
+                { name: "ميدو جابر", image: "images/midfielders/mido.jpg", videoLink: "رابط_الفيديو_هنا" },
+                { name: "ميدو جابر", image: "images/midfielders/mido.jpg", videoLink: "رابط_الفيديو_هنا" },
+            ],
+            "المهاجمين": [
+                { name: "صلاح محسن", image: "images/forwards/salah.jpg", videoLink: "رابط_الفيديو_هنا" },
+                { name: "فخر الدين", image: "images/forwards/fakhr.jpg", videoLink: "رابط_الفيديو_هنا" }
+            ]
+        };
+
+        // ==========================================
+        // الكود ده هو اللي بيبني الشاشة (ماتلعبش فيه)
+        // ==========================================
+        const container = document.getElementById('squadContainer');
+
+        for (const [position, players] of Object.entries(playersData)) {
+            let sectionHTML = `<div class="section-title">${position}</div><div class="players-grid">`;
             
-            // تغيير العنوان
+            players.forEach(player => {
+                sectionHTML += `
+                    <div class="player-card" onclick="changeVideo('${player.name}', '${player.videoLink}', this)">
+                        <img src="${player.image}" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=N/A'">
+                        <span>${player.name}</span>
+                    </div>
+                `;
+            });
+            
+            sectionHTML += `</div>`;
+            container.innerHTML += sectionHTML;
+        }
+
+        // ==========================================
+        // تعديل: الدالة بقت بتاخد الرابط كامل وتحطه مباشرة
+        // ==========================================
+        function changeVideo(playerName, link, element) {
+            const player = document.getElementById('videoPlayer');
+            player.src = link;
+            
             document.getElementById('playingTitle').innerText = `▶ يعرض الآن: ${playerName}`;
             
-            // تظليل اللاعب المختار
             document.querySelectorAll('.player-card').forEach(card => card.classList.remove('active-player'));
             element.classList.add('active-player');
         }
     </script>
-
 </body>
 </html>

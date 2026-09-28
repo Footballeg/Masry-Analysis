@@ -38,42 +38,78 @@
 
     <div class="container">
         
-        <!-- قسم التشكيل واختيار اللاعبين -->
+       <!-- قسم التشكيل واختيار اللاعبين -->
         <div class="squad-section">
             
-            <div class="section-title">المهاجمين</div>
+            <!-- 1. حراس المرمى -->
+            <div class="section-title">حراس المرمى (Goalkeepers)</div>
             <div class="players-grid">
-                <!-- كارت اللاعب الأول: غير اسم اللاعب، صورة اللاعب، والـ ID بتاع يوتيوب -->
-                <div class="player-card" onclick="changeVideo('عمر', 'dQw4w9WgXcQ', this)">
-                    <img src="images/attackers/omar.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Omar'">
-                    <span>عمر</span>
+                <div class="player-card" onclick="changeVideo('محمود جاد', 'ID_HERE', this)">
+                    <img src="images/goalkeepers/gad.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Gad'">
+                    <span>محمود جاد</span>
                 </div>
-
-                <!-- كارت اللاعب الثاني -->
-                <div class="player-card" onclick="changeVideo('محمد', 'ScMzIvxBSi4', this)">
-                    <img src="images/attackers/mohamed.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Mohamed'">
-                    <span>محمد</span>
+                <div class="player-card" onclick="changeVideo('عصام ثروت', 'ID_HERE', this)">
+                    <img src="images/goalkeepers/tharwat.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Tharwat'">
+                    <span>عصام ثروت</span>
                 </div>
             </div>
 
-            <div class="section-title">خط الوسط</div>
+            <!-- 2. المدافعين -->
+            <div class="section-title">المدافعين (Defenders)</div>
             <div class="players-grid">
-                <div class="player-card" onclick="changeVideo('أحمد', 'tPEE9ZwTmy0', this)">
-                    <img src="images/midfielders/ahmed.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Ahmed'">
-                    <span>أحمد</span>
+                <div class="player-card" onclick="changeVideo('باهر المحمدي', 'ID_HERE', this)">
+                    <img src="images/defenders/baher.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Baher'">
+                    <span>باهر المحمدي</span>
+                </div>
+                <div class="player-card" onclick="changeVideo('كريم العراقي', 'ID_HERE', this)">
+                    <img src="images/defenders/karim.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Karim'">
+                    <span>كريم العراقي</span>
+                </div>
+                <div class="player-card" onclick="changeVideo('عمرو سعداوي', 'ID_HERE', this)">
+                    <img src="images/defenders/saadawy.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Saadawy'">
+                    <span>عمرو سعداوي</span>
+                </div>
+                <div class="player-card" onclick="changeVideo('حسين السيد', 'ID_HERE', this)">
+                    <img src="images/defenders/hussein.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Hussein'">
+                    <span>حسين السيد</span>
+                </div>
+            </div>
+
+            <!-- 3. خط الوسط -->
+            <div class="section-title">خط الوسط (Midfielders)</div>
+            <div class="players-grid">
+                <div class="player-card" onclick="changeVideo('محمود حمادة', 'ID_HERE', this)">
+                    <img src="images/midfielders/hamada.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Hamada'">
+                    <span>محمود حمادة</span>
+                </div>
+                <div class="player-card" onclick="changeVideo('ميدو جابر', 'ID_HERE', this)">
+                    <img src="images/midfielders/mido.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Mido'">
+                    <span>ميدو جابر</span>
+                </div>
+                <div class="player-card" onclick="changeVideo('سمير فكري', 'ID_HERE', this)">
+                    <img src="images/midfielders/samir.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Samir'">
+                    <span>سمير فكري</span>
+                </div>
+            </div>
+
+            <!-- 4. المهاجمين -->
+            <div class="section-title">المهاجمين (Forwards)</div>
+            <div class="players-grid">
+                <div class="player-card" onclick="changeVideo('فخر الدين بن يوسف', 'ID_HERE', this)">
+                    <img src="images/forwards/fakhr.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Fakhr'">
+                    <span>بن يوسف</span>
+                </div>
+                <div class="player-card" onclick="changeVideo('صلاح محسن', 'ID_HERE', this)">
+                    <img src="images/forwards/salah.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Salah'">
+                    <span>صلاح محسن</span>
+                </div>
+                <div class="player-card" onclick="changeVideo('محمد الشامي', 'ID_HERE', this)">
+                    <img src="images/forwards/shami.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Shami'">
+                    <span>محمد الشامي</span>
                 </div>
             </div>
 
         </div>
-
-        <!-- قسم عرض الفيديو -->
-        <div class="video-section">
-            <div class="video-title" id="playingTitle">▶ اختر لاعب لعرض الحالات التكتيكية</div>
-            <iframe id="videoPlayer" src="" allowfullscreen></iframe>
-        </div>
-
-    </div>
-
     <script>
         function changeVideo(playerName, youtubeId, element) {
             // تغيير رابط الفيديو

@@ -1,92 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wadi Degla - Performance Analysis</title>
+    <title>Wadi Degla - Tactical Board</title>
     <style>
         body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #121212; color: white; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; background-color: #1e1e1e; padding: 10px 20px; border-bottom: 2px solid #333; }
+        .navbar h3 { margin: 0; font-weight: 600; color: #66bb6a; }
+        .logo { height: 50px; }
         
-        /* Navbar */
-        .navbar { display: flex; justify-content: space-between; align-items: center; background-color: #1e1e1e; padding: 10px 20px; border-bottom: 1px solid #333; }
-        .navbar h3 { margin: 0; letter-spacing: 1px; font-weight: 600; }
-        .logo { height: 40px; }
+        .container { display: flex; padding: 20px; gap: 20px; height: calc(100vh - 100px); flex-wrap: wrap; }
         
-        /* Layout */
-        .container { display: flex; padding: 20px; gap: 20px; height: calc(100vh - 100px); }
-        .video-section { flex: 2; display: flex; flex-direction: column; }
-        .squad-section { flex: 3; background-color: #1e1e1e; border-radius: 8px; border: 1px solid #2a2a2a; padding: 20px; overflow-y: auto; }
+        .video-section { flex: 2; min-width: 300px; display: flex; flex-direction: column; background-color: #1e1e1e; border-radius: 10px; padding: 15px; }
+        .video-title { color: #66bb6a; font-size: 18px; margin-bottom: 15px; font-weight: bold; }
+        iframe { width: 100%; height: 100%; min-height: 400px; border: none; border-radius: 8px; background-color: #000; }
         
-        /* Video Player */
-        .video-card { background-color: #1e1e1e; border-radius: 8px; border: 1px solid #2a2a2a; padding: 15px; flex-grow: 1; display: flex; flex-direction: column; }
-        .video-title { color: #4CAF50; font-size: 14px; margin-bottom: 10px; font-weight: bold; }
-        iframe { width: 100%; height: 100%; min-height: 400px; border: none; border-radius: 4px; background-color: #000; }
+        .squad-section { flex: 1; min-width: 250px; background-color: #1e1e1e; border-radius: 10px; padding: 15px; overflow-y: auto; }
+        .section-title { color: #a0a0a0; font-size: 14px; margin: 15px 0 10px 0; border-bottom: 1px solid #333; padding-bottom: 5px; }
+        .players-grid { display: flex; flex-wrap: wrap; gap: 15px; }
         
-        /* Squad Grid */
-        .section-title { color: #a0a0a0; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px; margin-top: 15px;}
-        .players-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 15px; }
-        
-        /* Player Card */
-        .player-card { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.2s; }
-        .player-card:hover { transform: scale(1.1); }
-        .player-card img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid #444; object-fit: cover; }
-        .player-card span { color: #ccc; font-size: 11px; margin-top: 8px; text-transform: uppercase; }
-        .active-player img { border-color: #4CAF50; border-width: 3px; }
+        .player-card { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: 0.3s; padding: 5px; border-radius: 8px; }
+        .player-card:hover { background-color: #2c2c2c; }
+        .player-card img { width: 65px; height: 65px; border-radius: 50%; border: 2px solid #444; object-fit: cover; }
+        .player-card span { color: #ccc; font-size: 12px; margin-top: 8px; font-weight: bold; }
+        .active-player { background-color: #333; }
+        .active-player img { border-color: #66bb6a; border-width: 3px; }
     </style>
 </head>
 <body>
 
     <div class="navbar">
-        <img src="assets/logo1.png" class="logo" alt="Logo 1" onerror="this.style.display='none'">
-        <h3>WADI DEGLA FC - PERFORMANCE ANALYSIS</h3>
-        <img src="assets/logo2.png" class="logo" alt="Logo 2" onerror="this.style.display='none'">
+        <img src="assets/logo1.png" class="logo" alt="Logo">
+        <h3>منصة التحليل التكتيكي - وادي دجلة</h3>
+        <img src="assets/logo2.png" class="logo" alt="Logo">
     </div>
 
     <div class="container">
-        <!-- Video Player Section -->
-        <div class="video-section">
-            <div class="video-card">
-                <div class="video-title" id="playingTitle">▶ Select a player to view clips</div>
-                <!-- مشغل يوتيوب المدمج -->
-                <iframe id="videoPlayer" src="" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Squad Section -->
+        
+        <!-- قسم التشكيل واختيار اللاعبين -->
         <div class="squad-section">
             
-            <div class="section-title">ATTACKERS</div>
+            <div class="section-title">المهاجمين</div>
             <div class="players-grid">
-                <!-- كارت لاعب: بتكتب اسمه، مسار صورته، و الـ ID بتاع فيديو يوتيوب (اللي بعد v= في اللينك) -->
-                <div class="player-card" onclick="changeVideo('Omar', 'XXXXXXXXXXX', this)">
-                    <img src="images/attackers/Omar.jpg" onerror="this.src='https://via.placeholder.com/60/222/FFF?text=N/A'">
-                    <span>Omar</span>
+                <!-- كارت اللاعب الأول: غير اسم اللاعب، صورة اللاعب، والـ ID بتاع يوتيوب -->
+                <div class="player-card" onclick="changeVideo('عمر', 'dQw4w9WgXcQ', this)">
+                    <img src="images/attackers/omar.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Omar'">
+                    <span>عمر</span>
                 </div>
-                <!-- ضيف المهاجمين التانيين هنا بنفس الطريقة -->
-            </div>
 
-            <div class="section-title">MIDFIELDERS</div>
-            <div class="players-grid">
-                <div class="player-card" onclick="changeVideo('Mohamed', 'ZZZZZZZZZZZ', this)">
-                    <img src="images/midfielders/Mohamed.jpg" onerror="this.src='https://via.placeholder.com/60/222/FFF?text=N/A'">
-                    <span>Mohamed</span>
+                <!-- كارت اللاعب الثاني -->
+                <div class="player-card" onclick="changeVideo('محمد', 'ScMzIvxBSi4', this)">
+                    <img src="images/attackers/mohamed.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Mohamed'">
+                    <span>محمد</span>
                 </div>
             </div>
 
-            <div class="section-title">DEFENDERS</div>
+            <div class="section-title">خط الوسط</div>
             <div class="players-grid">
-                <!-- ضيف المدافعين هنا -->
-            </div>
-
-            <div class="section-title">BENCH</div>
-            <div class="players-grid">
-                <!-- ضيف الدكة هنا -->
+                <div class="player-card" onclick="changeVideo('أحمد', 'tPEE9ZwTmy0', this)">
+                    <img src="images/midfielders/ahmed.jpg" onerror="this.src='https://via.placeholder.com/65/222/FFF?text=Ahmed'">
+                    <span>أحمد</span>
+                </div>
             </div>
 
         </div>
+
+        <!-- قسم عرض الفيديو -->
+        <div class="video-section">
+            <div class="video-title" id="playingTitle">▶ اختر لاعب لعرض الحالات التكتيكية</div>
+            <iframe id="videoPlayer" src="" allowfullscreen></iframe>
+        </div>
+
     </div>
 
-    <!-- السكريبت اللي بيغير الفيديو بنعومة بدون Refresh -->
     <script>
         function changeVideo(playerName, youtubeId, element) {
             // تغيير رابط الفيديو
@@ -94,12 +81,13 @@
             player.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
             
             // تغيير العنوان
-            document.getElementById('playingTitle').innerText = `▶ Playing: ${playerName}`;
+            document.getElementById('playingTitle').innerText = `▶ يعرض الآن: ${playerName}`;
             
-            // إضافة برواز أخضر للاعب المختار
+            // تظليل اللاعب المختار
             document.querySelectorAll('.player-card').forEach(card => card.classList.remove('active-player'));
             element.classList.add('active-player');
         }
     </script>
+
 </body>
 </html>
